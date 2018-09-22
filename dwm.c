@@ -194,6 +194,7 @@ static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
+static void rotatestack(const Arg *arg);
 static void run(void);
 static void scan(void);
 static int sendevent(Client *c, Atom proto);
@@ -1393,6 +1394,32 @@ restack(Monitor *m)
 	}
 	XSync(dpy, False);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
+}
+
+void
+rotatestack(const Arg *arg)
+{
+	Client *c = NULL, *f, *lmc = nexttiled(selmon->clients);
+
+	if (!selmon->sel)
+		return;
+    f = selmon->sel;
+    for (c = nexttiled(selmon->clients); c && nexttiled(c->next); c = nexttiled(c->next));
+    if (c){
+        for (int nm = arg->i > 0 ? 1 : 0; nm < selmon->nmaster && nexttiled(lmc->next); nm++) lmc = nexttiled(lmc->next);
+        if(arg->i > 0) {
+            detach(c);
+            c->next = nexttiled(lmc->next);
+            lmc->next=c;
+        } else {
+            detach(lmc);
+            lmc->next = NULL;
+            c->next=lmc;
+        }
+        arrange(selmon);
+        focus(f);
+        restack(selmon);
+	}
 }
 
 void
