@@ -21,7 +21,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4" };
+static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -75,7 +75,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_c,      spawn,          {.v = calcmd} },
-    { MODKEY,                       XK_x,      runorraise,     {.v = mailcmd} },
+    { MODKEY,                       XK_x,      spawn,          {.v = mailcmd} },
     { MODKEY,                       XK_y,      runorraise,     {.v = firefoxcmd} },
     { MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
     { 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = volup} },
