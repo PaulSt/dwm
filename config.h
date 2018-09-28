@@ -30,7 +30,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1,            0,           -1 },
 };
 
 /* layout(s) */
@@ -60,22 +60,25 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *calcmd[]  = { "st", "-e", "calcurse-sync", NULL };
-static const char *mailcmd[]  = { "st", "-e", "mutt", NULL, "mutt" };
 static const char *lockcmd[]  = { "slock", NULL };
 static const char *volup[]  = { "amixer", "-c", "0", "set", "Master", "5%+", NULL };
 static const char *voldo[]  = { "amixer", "-c", "0", "set", "Master", "5%-", NULL };
 static const char *volmu[]  = { "amixer", "-c", "0", "set", "Master", "1+" , "toggle",  NULL };
 static const char *brightinc[]  = { "xbacklight", "-inc", "5", NULL };
 static const char *brightdec[]  = { "xbacklight", "-dec", "5", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL,NULL,NULL,"Firefox" };
+/* runorraise commands, name on entry 6 */
+static const char *firefoxcmd[] = { "firefox", NULL,NULL,NULL,NULL,NULL,"Firefox" };
+static const char *calcmd[]  = { "st", "-c", "calcurse", "-e", "calcurse-sync", NULL, "calcurse" };
+static const char *mailcmd[]  = { "st", "-c" , "mutt", "-e", "mutt", NULL, "mutt" };
+static const char *newscmd[]  = { "st", "-c" , "newsboat", "-e", "newsboat", NULL, "newsboat" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_c,      spawn,          {.v = calcmd} },
-    { MODKEY,                       XK_x,      spawn,          {.v = mailcmd} },
+    { MODKEY,                       XK_v,      runorraise,          {.v = newscmd} },
+    { MODKEY,                       XK_c,      runorraise,          {.v = calcmd} },
+    { MODKEY,                       XK_x,      runorraise,          {.v = mailcmd} },
     { MODKEY,                       XK_y,      runorraise,     {.v = firefoxcmd} },
     { MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
     { 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = volup} },
