@@ -1447,6 +1447,8 @@ runorraise(const Arg *arg) {
             XGetClassHint(dpy, c->win, &hint);
             if (hint.res_class && strcmp(app, hint.res_class) == 0) {
                 a.ui = c->tags;
+		unfocus(selmon->sel, 0);
+		selmon = mon;
                 view(&a);
                 focus(c);
                 XRaiseWindow(dpy, c->win);
