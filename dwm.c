@@ -1436,7 +1436,7 @@ run(void)
 
 void                                                                                                                          
 runorraise(const Arg *arg) {
-    char *app = ((char **)arg->v)[6];
+    char *app = ((char **)arg->v)[7];
     Arg a = { .ui = ~0 };
     Monitor *mon;
     Client *c;
