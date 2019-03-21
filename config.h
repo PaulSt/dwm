@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "q", "w", "e", "r", "y" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -87,15 +87,15 @@ static Key keys[] = {
     { MODKEY,                       XK_v,      runorraise,     {.v = newscmd} },
     { MODKEY,                       XK_c,      runorraise,     {.v = calcmd} },
     { MODKEY,                       XK_x,      runorraise,     {.v = mailcmd} },
-    { MODKEY,                       XK_y,      runorraise,     {.v = firefoxcmd} },
-    { MODKEY,                       XK_a,      runorraise,     {.v = orgcmd} },
+    { MODKEY,                       XK_z,      runorraise,     {.v = firefoxcmd} },
+    { MODKEY,                       XK_b,      runorraise,     {.v = orgcmd} },
     { MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
     { 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = volup} },
     { 0,            XF86XK_AudioLowerVolume,   spawn,          {.v = voldo} },
     { 0,            XF86XK_AudioMute,          spawn,          {.v = volmu} },
     { 0,            XF86XK_MonBrightnessUp,    spawn,          {.v = brightinc} },
     { 0,            XF86XK_MonBrightnessDown,  spawn,          {.v = brightdec} },
-    { MODKEY,                       XK_b,      togglebar,      {0} },
+    { MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
     { MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -118,15 +118,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+    TAGKEYS(                        XK_q,                      0)
+	TAGKEYS(                        XK_w,                      1)
+	TAGKEYS(                        XK_e,                      2)
+	TAGKEYS(                        XK_r,                      3)
+	TAGKEYS(                        XK_y,                      4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
