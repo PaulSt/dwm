@@ -33,7 +33,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0<<0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1<<0,            0,           -1 },
+	{ "firefox",  NULL,       NULL,       1<<0,            0,           -1 },
 	{ "orgmode",  NULL,       NULL,       1<<4,            0,           -1 },
 	{ "mutt",     NULL,       NULL,       1<<4,            0,           -1 },
 	{ "calcurse", NULL,       NULL,       1<<4,            0,           -1 },
@@ -74,21 +74,23 @@ static const char *volmu[]  = { "amixer", "-c", "0", "set", "Master", "1+" , "to
 static const char *brightinc[]  = { "xbacklight", "-inc", "5", NULL };
 static const char *brightdec[]  = { "xbacklight", "-dec", "5", NULL };
 /* runorraise commands, name on entry 6 */
-static const char *firefoxcmd[] = { "firefox", NULL,NULL,NULL,NULL,NULL,NULL,"Firefox" };
+static const char *firefoxcmd[] = { "firefox", NULL,NULL,NULL,NULL,NULL,NULL,"firefox" };
 static const char *calcmd[]  = { "st", "-c", "calcurse", "-e", "calcurse-sync",NULL, NULL, "calcurse" };
 static const char *mailcmd[]  = { "st", "-c" , "mutt", "-e", "mutt", NULL,NULL, "mutt" };
 static const char *newscmd[]  = { "st", "-c" , "newsboat", "-e", "newsboat",NULL, NULL, "newsboat" };
 static const char *orgcmd[]  = { "st", "-c" , "orgmode", "-e", "vim", "/home/paul/Dropbox/orgmode/bist.org",NULL, "orgmode" };
+static const char *vifmcmd[]  = { "st", "-c" , "vifm", "-e", "vifm", NULL, NULL, "vifm" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_v,      runorraise,     {.v = newscmd} },
+    { MODKEY,                       XK_b,      runorraise,     {.v = newscmd} },
     { MODKEY,                       XK_c,      runorraise,     {.v = calcmd} },
     { MODKEY,                       XK_x,      runorraise,     {.v = mailcmd} },
     { MODKEY,                       XK_z,      runorraise,     {.v = firefoxcmd} },
-    { MODKEY,                       XK_b,      runorraise,     {.v = orgcmd} },
+    { MODKEY,                       XK_o,      runorraise,     {.v = orgcmd} },
+    { MODKEY,                       XK_v,      runorraise,     {.v = vifmcmd} },
     { MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
     { 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = volup} },
     { 0,            XF86XK_AudioLowerVolume,   spawn,          {.v = voldo} },
@@ -123,7 +125,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_e,                      2)
 	TAGKEYS(                        XK_r,                      3)
 	TAGKEYS(                        XK_y,                      4)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_Escape,      quit,           {0} },
 };
 
 /* button definitions */
