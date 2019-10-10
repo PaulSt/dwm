@@ -80,6 +80,7 @@ static const char *mailcmd[]  = { "st", "-c" , "mutt", "-e", "mutt", NULL,NULL, 
 static const char *newscmd[]  = { "st", "-c" , "newsboat", "-e", "newsboat",NULL, NULL, "newsboat" };
 static const char *orgcmd[]  = { "st", "-c" , "orgmode", "-e", "vim", "/home/paul/Dropbox/orgmode/bist.org",NULL, "orgmode" };
 static const char *vifmcmd[]  = { "st", "-c" , "vifm", "-e", "vifm", NULL, NULL, "vifm" };
+static const char *emacscmd[]   = { "emacs",  NULL, NULL, NULL,NULL,NULL,NULL, "Emacs"};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -92,6 +93,8 @@ static Key keys[] = {
     { MODKEY,                       XK_o,      runorraise,     {.v = orgcmd} },
     { MODKEY,                       XK_v,      runorraise,     {.v = vifmcmd} },
     { MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
+    { MODKEY,                       XK_a,      runorraise,     {.v = emacscmd } },
+
     { 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = volup} },
     { 0,            XF86XK_AudioLowerVolume,   spawn,          {.v = voldo} },
     { 0,            XF86XK_AudioMute,          spawn,          {.v = volmu} },
