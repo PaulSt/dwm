@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "q", "w", "e", "r", "y" };
+static const char *tags[] = { "q", "w", "e", "r", "t" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -124,7 +124,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_w,                      1)
 	TAGKEYS(                        XK_e,                      2)
 	TAGKEYS(                        XK_r,                      3)
-	TAGKEYS(                        XK_y,                      4)
+	TAGKEYS(                        XK_t,                      4)
 	{ MODKEY|ShiftMask,             XK_Escape,      quit,           {0} },
 };
 
