@@ -67,7 +67,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *lockcmd[]  = { "slock", NULL };
 static const char *volup[]  = { "amixer", "-c", "0", "set", "Master", "5%+", NULL };
 static const char *voldo[]  = { "amixer", "-c", "0", "set", "Master", "5%-", NULL };
 static const char *volmu[]  = { "amixer", "-c", "0", "set", "Master", "1+" , "toggle",  NULL };
@@ -91,7 +90,7 @@ static Key keys[] = {
     { MODKEY,                       XK_z,      runorraise,     {.v = firefoxcmd} },
     { MODKEY,                       XK_o,      runorraise,     {.v = orgcmd} },
     { MODKEY,                       XK_v,      runorraise,     {.v = vifmcmd} },
-    { MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
+    { MODKEY,                       XK_Escape, spawn,          SHCMD("slock") },
     { 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = volup} },
     { 0,            XF86XK_AudioLowerVolume,   spawn,          {.v = voldo} },
     { 0,            XF86XK_AudioMute,          spawn,          {.v = volmu} },
